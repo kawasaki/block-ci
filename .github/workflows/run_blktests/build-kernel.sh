@@ -30,6 +30,7 @@ yes "" | make olddefconfig
 ./scripts/config --enable CONFIG_VIRTIO_FS
 ./scripts/config --enable CONFIG_IKCONFIG
 ./scripts/config --enable CONFIG_IKCONFIG_PROC
+./scripts/config --enable CONFIG_BLK_DEV_NULL_BLK
 ./scripts/config --enable CONFIG_BLK_DEV_ZONED
 ./scripts/config --enable CONFIG_F2FS_FS
 ./scripts/config --enable CONFIG_KASAN

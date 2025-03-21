@@ -2,11 +2,14 @@
 set -e
 set -x
 
-cd /
 mkdir -p /linux
-git clone -b "${KERNEL_COMMIT_SHA}" --depth=5 $KERNEL_TREE /linux
-
 cd /linux
+git init
+git remote add origin $KERNEL_TREE
+git fetch origin --depth=5 "${KERNEL_COMMIT_SHA}"
+git reset --hard "${KERNEL_COMMIT_SHA}"
+git log -1
+
 cp /base-kernel-config /linux/.config
 yes "" | make olddefconfig
 ./scripts/config --enable CONFIG_BTRFS_FS

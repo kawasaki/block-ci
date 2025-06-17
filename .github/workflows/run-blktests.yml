@@ -52,6 +52,12 @@ jobs:
           cat /etc/os-release
           lsblk
 
+      #We create .info files that contain the KERNEL_VERSION tag in the
+      #modules tree when building the kernel
+      - name: Verify that we are running the correct kernel
+        run: |
+          cat /usr/lib/modules/*.info | grep "${KERNEL_VERSION}" 
+
       - name: Install build dependencies for blktests
         run: |
           sudo dnf install -y gcc \

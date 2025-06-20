@@ -14,7 +14,14 @@ jobs:
     #This step runs in a container in the k8s cluster 
     runs-on: arc-kernel-builder
     steps:
-      - name: Checkout this repo
+      - uses: actions/checkout@v4
+      - name: Wait for other workflow runs to finish before starting the next
+        uses: ahmadnassri/action-workflow-queue@v1
+        with:
+          #Timeout after a week
+          timeout: 604800000
+
+      - name: Checkout blktests-ci
         uses: actions/checkout@v4
         with:
           repository: linux-blktests/blktests-ci

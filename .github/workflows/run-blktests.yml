@@ -38,7 +38,7 @@ jobs:
           docker push registry-service.docker-registry.svc.cluster.local/linux-kernel-containerdisk:${KERNEL_VERSION}
 
       - name: Run in VM
-        uses: blktests-ci/.github/actions/kubevirt-action
+        uses: ./blktests-ci/.github/actions/kubevirt-action
         with:
           kernel_version: ${{ env.KERNEL_VERSION }}
           run_cmds: |

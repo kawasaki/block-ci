@@ -10,15 +10,14 @@ env:
 #This workflow requires an actions-runner-controllers (ARC) to be active.
 #The k8s cluster of this ARC needs KubeVirt to be installed.
 jobs:
-  build-kernel:
+  build-and-test-kernel:
     #This step runs in a container in the k8s cluster 
     runs-on: arc-vm-shinichiro-linux-block
     steps:
       - name: Checkout blktests-ci
         uses: actions/checkout@v4
         with:
-          repository: MaisenbacherD/blktests-ci
-          ref: "fix-arc"
+          repository: linux-blktests/blktests-ci
           path: blktests-ci
 
       - name: Build kernel and package it into a containerimage
